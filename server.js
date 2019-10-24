@@ -11,8 +11,10 @@ var app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//app.use(express.static("public"))
-//is this needed with handlebars?
+var exphbs = require("express-handlebars");
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
 mongoose.connect("mongodb://localhost/nyt_db");
 
@@ -25,7 +27,13 @@ db.News.create({
     console.log(dbNews);
   })
   .catch(err => {
-      console.log(err);
+    console.log(err);
   });
 
-app.get("/");
+var routes = require("./controllers/catsController.js");
+
+app.use(routes);
+
+app.listen(PORT => {
+  console.log("App on port " + PORT);
+});

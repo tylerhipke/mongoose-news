@@ -3,11 +3,12 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 var NewsSchema = new Schema ({
-    headline: String,
+    headline: {
+        type: String,
+    },
     summary: String,
     url: {
         type: String,
-        unique: true
     }
 });
 
