@@ -2,26 +2,27 @@ var express = require("express");
 var exphbs = require("express-handlebars");
 var axios = require("axios");
 var router = express.Router();
-
+var dom = require("./controllerDom.js")
 var news = require("../models");
 
-var queryUrl =
-  "https://api.nytimes.com/svc/topstories/v2/home.json";
+var queryUrl = "https://api.nytimes.com/svc/topstories/v2/home.json";
+
 
 router.get("/", function(req, res) {
   axios
     .get(queryUrl, {
       params: {
-        "api-key" : process.env.NYT_API_KEY
+        "api-key": process.env.NYT_API_KEY
       }
     })
     .then(function(response) {
-      console.log(response);
-      exphbs.render("index");
+      console.log("response posted.");
+      dom.drawArticles(response);
     })
     .catch(function(error) {
       console.log(error);
-    })
+    });
+  res.render('index');
 });
 
 module.exports = router;
