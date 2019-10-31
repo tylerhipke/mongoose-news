@@ -19,18 +19,6 @@ app.set("view engine", "handlebars");
 
 mongoose.connect("mongodb://localhost/nyt_db");
 
-// db.News.create({
-//   headline: "test article",
-//   summary: "summary goes here",
-//   url: "http://www.google.com"
-// })
-//   .then(dbNews => {
-//     console.log(dbNews);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
-
 var routes = require("./controllers/controllerMain.js");
 
 app.use(routes);
