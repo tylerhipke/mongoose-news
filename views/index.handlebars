@@ -1,51 +1,12 @@
-{{!-- <script>
-    var articles = {
-        "news1": {
-            name: "test",
-            image: "#",
-            summary: "summary goes here",
-            link: "https://www.google.com"
-        },
-        "news2": {
-            name: "test",
-            image: "#",
-            summary: "summary goes here",
-            link: "https://www.google.com"
-        },
-        "news3": {
-            name: "test",
-            image: "#",
-            summary: "summary goes here",
-            link: "https://www.google.com"
-        },
-        "news4": {
-            name: "test",
-            image: "#",
-            summary: "summary goes here",
-            link: "https://www.google.com"
-        },
-        "news5": {
-            name: "test",
-            image: "#",
-            summary: "summary goes here",
-            link: "https://www.google.com"
-        }
-    }
-</script> --}}
-
-
-
-
 <div class="container">
-
     <div class="news-body">
         {{#if articles}}
         {{#each articles}}
         <div class="card" style="width: 100%">
             <div class="card-body">
-                <h5 class="card-title">{{name}}</h5>
-                <p class="card-text">{{summary}}</p>
-                <a href="{{link}}" class="btn btn-info">Save For Later</a>
+                <h5 class="card-title">{{this.title}}</h5>
+                <p class="card-text">{{this.summary}}</p>
+                <a href="{{this.link}}" id="{{this.id}}" class="btn btn-info">Save For Later</a>
             </div>
         </div>
         {{/each}}
@@ -53,9 +14,4 @@
         <h1 class="display-1 text-center mt-5">Please Pull More Articles</h1>
         {{/if}}
     </div>
-
-
-
-
-
-    </div>
+</div>

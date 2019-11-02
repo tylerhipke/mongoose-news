@@ -5,19 +5,16 @@ var router = express.Router();
 
 var queryUrl = "https://www.nbcsandiego.com/news/local/";
 
-// router.get("/", function(req, res) {
-//   res.render("index");
-// });
-
-router.get("/pull", function(req, res) {
-  var result = {};
+router.get("/", function(req, res) {
   axios
     .get(queryUrl)
     .then(function(response) {
       var $ = cheerio.load(response.data);
       var siteContent = $("#offlead");
+      var result = [];
       $(".article").each(function(i, element) {
         var currentObj = {};
+        currentObj.id = [i];
         currentObj.title = $(element)
           .children("div")
           .children("p")
@@ -36,13 +33,16 @@ router.get("/pull", function(req, res) {
         if (currentObj.title && currentObj.summary && currentObj.link) {
           result[i] = currentObj;
         }
+        return result;
       });
-      console.log(result);
+      return result;
+    })
+    .then(result => {
+      res.render("index", { articles: result });
     })
     .catch(function(error) {
       console.log(error);
     });
-  res.render("index", { articles: result });
 });
 
 module.exports = router;
