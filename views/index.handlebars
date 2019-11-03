@@ -1,9 +1,14 @@
+<div class="container-fluid">
+    <img src="./assets/header.jpeg" alt="" id="header-img">
+</div>
+
 <div class="container">
     <div class="news-body">
         {{#if articles}}
         {{#each articles}}
         <div class="card" style="width: 100%">
             <div class="card-body">
+                <img src="{{this.image}}" alt="{{this.title}}" class="card-img-top">
                 <h5 class="card-title">{{this.title}}</h5>
                 <p class="card-text">{{this.summary}}</p>
                 <a href="{{this.link}}" id="{{this.id}}" class="btn btn-info">Save For Later</a>

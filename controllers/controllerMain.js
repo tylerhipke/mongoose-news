@@ -14,7 +14,6 @@ router.get("/", function(req, res) {
       var result = [];
       $(".article").each(function(i, element) {
         var currentObj = {};
-        currentObj.id = [i];
         currentObj.title = $(element)
           .children("div")
           .children("p")
@@ -30,6 +29,12 @@ router.get("/", function(req, res) {
           .children("p")
           .children("a")
           .attr("href");
+        currentObj.image = $(element)
+          .children("div")
+          .children("span")
+          .children("a")
+          .children("img")
+          .attr("src");
         if (currentObj.title && currentObj.summary && currentObj.link) {
           result[i] = currentObj;
         }
@@ -38,11 +43,28 @@ router.get("/", function(req, res) {
       return result;
     })
     .then(result => {
+      console.log(result);
       res.render("index", { articles: result });
     })
     .catch(function(error) {
       console.log(error);
     });
+});
+
+router.put("/api/add", function(req,res){
+
+});
+
+router.post("api/update" function(req,res) {
+
+});
+
+router.get("/api/load/all", function(req,res){
+
+});
+
+router.get("/api/load/:id", function(req, res){
+
 });
 
 module.exports = router;
