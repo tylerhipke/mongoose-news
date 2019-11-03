@@ -1,0 +1,23 @@
+#header-img {
+  width: 100%;
+}
+
+#page-lead {
+  text-shadow: 
+    0px 5px 5px rgba(0, 0, 0, 0.1),
+    5px 5px 5px rgba(0, 0, 0, 0.05), 
+    -5px 5px 5px rgba(0, 0, 0, 0.05);
+}
+
+.news-body{
+  position: absolute;
+  top: 4rem;
+}
+
+.card-columns{
+    z-index: 5;
+}
+
+nav{
+    z-index: 10;
+}

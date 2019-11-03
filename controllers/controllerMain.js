@@ -51,20 +51,20 @@ router.get("/", function(req, res) {
     });
 });
 
-router.put("/api/add", function(req,res){
+// router.put("/api/add", function(req,res){
 
-});
+// });
 
-router.post("api/update" function(req,res) {
+// router.post("api/update" function(req,res) {
 
-});
+// });
 
-router.get("/api/load/all", function(req,res){
+// router.get("/api/load/all", function(req,res){
 
-});
+// });
 
-router.get("/api/load/:id", function(req, res){
+// router.get("/api/load/:id", function(req, res){
 
-});
+// });
 
 module.exports = router;

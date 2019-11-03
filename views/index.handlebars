@@ -1,20 +1,28 @@
-<div class="container-fluid">
-    <img src="./assets/header.jpeg" alt="" id="header-img">
-</div>
-
-<div class="container">
+<header class="">
+    <img src="./assets/header.jpeg" id="header-img">
+</header>
+<div class="flex-container">
     <div class="news-body">
-        {{#if articles}}
-        {{#each articles}}
-        <div class="card" style="width: 100%">
-            <div class="card-body">
-                <img src="{{this.image}}" alt="{{this.title}}" class="card-img-top">
-                <h5 class="card-title">{{this.title}}</h5>
-                <p class="card-text">{{this.summary}}</p>
-                <a href="{{this.link}}" id="{{this.id}}" class="btn btn-info">Save For Later</a>
-            </div>
+        <div class="mb-5 mx-5" id="page-lead">
+            <h1 class="display-1">san diego: news now</h1>
+            <p class="lead">save your articles for later, free of use</p>
         </div>
-        {{/each}}
+
+        <div class="card-columns w-75 mx-auto">
+            {{#if articles}}
+            {{#each articles}}
+            <div class="card rounded-0">
+                <div class="card-body">
+                    <img src="{{this.image}}" alt="{{this.title}}" class="card-img-top">
+                    <h5 class="card-title">{{this.title}}</h5>
+                    <p class="card-text">{{this.summary}}</p>
+                    <a href="{{this.link}}" id="{{this.id}}" class="btn btn-light">View</a>
+                    <a href="./api/load/{{this.id}}" id="{{this.id}}" class="btn btn-light">Save</a>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
         {{else}}
         <h1 class="display-1 text-center mt-5">Please Pull More Articles</h1>
         {{/if}}
