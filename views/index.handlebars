@@ -16,8 +16,8 @@
                 <div class="card-body">
                     <h5 class="card-title">{{this.title}}</h5>
                     <p class="card-text">{{this.summary}}</p>
-                    <a href="{{this.link}}" id="{{this.id}}" class="btn btn-light">View</a>
-                    <a href="./api/load/{{this.id}}" id="{{this.id}}" class="btn btn-light">Save</a>
+                    <a href="{{this.link}}" target="_blank" class="btn btn-light">View</a>
+                    <button id="{{this.id}}" class="btn btn-light btn-save">Save</button>
                 </div>
             </div>
             {{/each}}

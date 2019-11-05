@@ -14,6 +14,7 @@ router.get("/", function(req, res) {
       var result = [];
       $(".article").each(function(i, element) {
         var currentObj = {};
+        currentObj.id = i;
         currentObj.title = $(element)
           .children("div")
           .children("p")
