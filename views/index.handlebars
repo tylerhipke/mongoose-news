@@ -1,4 +1,4 @@
-<header class="">
+<header>
     <img src="./assets/header.jpeg" id="header-img">
 </header>
 <div class="flex-container">
@@ -11,9 +11,9 @@
         <div class="card-columns w-75 mx-auto">
             {{#if articles}}
             {{#each articles}}
-            <div class="card rounded-0">
+            <div class="card">
+                <img src="{{this.image}}" alt="{{this.title}}" class="card-img-top">
                 <div class="card-body">
-                    <img src="{{this.image}}" alt="{{this.title}}" class="card-img-top">
                     <h5 class="card-title">{{this.title}}</h5>
                     <p class="card-text">{{this.summary}}</p>
                     <a href="{{this.link}}" id="{{this.id}}" class="btn btn-light">View</a>
