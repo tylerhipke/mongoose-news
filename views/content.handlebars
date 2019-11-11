@@ -1,0 +1,31 @@
+<header>
+    <img src="./assets/header.jpeg" id="header-img">
+</header>
+<div class="flex-container">
+    <div class="news-body">
+        <div class="mb-5 mx-5" id="page-lead">
+            <h1 class="display-1">saved articles</h1>
+            <p class="lead">san diego: news now</p>
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                {{#if news}}
+                {{#each news}}
+                <div class="card w-75 mb-5">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.headline}}</h5>
+                        <p class="card-text">{{this.summary}}</p>
+                        <a href="{{this.url}}" target="_blank" class="btn btn-light">View</a>
+                        <a href="./api/modify/{{this._id}}" target="_blank" class="btn btn-light">Note</a>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+
+        {{else}}
+        <h1 class="display-1 text-center mt-5">Please Save An Article</h1>
+        {{/if}}
+    </div>
+</div>

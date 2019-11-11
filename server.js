@@ -17,7 +17,11 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-mongoose.connect("mongodb://localhost/nyt_db");
+mongoose.connect('mongodb://localhost/newsdb', 
+    {useNewUrlParser: true},
+    { useUnifiedTopology: true }
+    );
+
 
 var routes = require("./controllers/controllerMain.js");
 

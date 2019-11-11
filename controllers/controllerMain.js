@@ -2,6 +2,7 @@ var express = require("express");
 var axios = require("axios");
 var cheerio = require("cheerio");
 var router = express.Router();
+var db = require("../models/")
 
 var queryUrl = "https://www.nbcsandiego.com/news/local/";
 
@@ -52,20 +53,60 @@ router.get("/", function(req, res) {
     });
 });
 
-// router.put("/api/add", function(req,res){
+router.post("/api/add", function(req,res){
+  db.News.create({
+    headline: req.body.headline,
+    summary: req.body.summary,
+    url: req.body.url,
+    note: req.body.note
+  })
+  .then(function(dbNews){
+    res.json(dbNews);
+  })
+  .catch(function(err){
+    res.json(err);
+  });
+});
 
-// });
+router.post("api/modify/:id", function(req,res) {
+  db.News.create({
+    headline: req.body.headline,
+    summary: req.body.summary,
+    url: req.body.url,
+    note: req.body.note
+  })
+  .then(function(dbNews){
+    res.json(dbNews);
+    return db.News.findOneAndUpdate(
+      { _id: req.params.id }, 
+      { note: dbNote._id });
+      // { new: true });
+  })
+  .catch(function(err){
+    res.json(err);
+  });
+});
 
-// router.post("api/update" function(req,res) {
+router.get("/saved", function(req,res){
+  db.News.find({})
+  .then(function(dbNews){
+    // res.json(dbNews);
+    res.render("content", { news: dbNews });
+  })
+  .catch(function(err){
+    res.json(err);
+  })
+});
 
-// });
-
-// router.get("/api/load/all", function(req,res){
-
-// });
-
-// router.get("/api/load/:id", function(req, res){
-
-// });
+router.get("/api/modify/:id", function(req, res){
+  db.News.findOne({ _id: req.params.id })
+    .populate("note")
+    .then(function(dbNews) {
+      res.json(dbNews);
+    })
+    .catch(function(err) {
+      res.json(err);
+    });
+});
 
 module.exports = router;
