@@ -28,5 +28,11 @@ $(".btn-save").click(function() {
 	  console.log( "error" );
 	});
 
-	
+	$('.alert').show()
+
+
 });
+
+$(".btn-close").click(function(){
+	$('.alert').fadeOut();
+})
