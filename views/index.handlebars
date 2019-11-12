@@ -11,13 +11,13 @@
         <div class="card-columns w-75 mx-auto">
             {{#if articles}}
             {{#each articles}}
-            <div class="card">
+            <div class="card" id="{{this.id}}">
                 <img src="{{this.image}}" alt="{{this.title}}" class="card-img-top">
                 <div class="card-body">
                     <h5 class="card-title">{{this.title}}</h5>
                     <p class="card-text">{{this.summary}}</p>
                     <a href="{{this.link}}" target="_blank" class="btn btn-light">View</a>
-                    <button id="{{this.id}}" class="btn btn-light btn-save">Save</button>
+                    <button data="{{this.id}}" class="btn btn-light btn-save">Save</button>
                 </div>
             </div>
             {{/each}}
@@ -30,5 +30,5 @@
 </div>
 
 <script>
-    document.getElementById('home-nav-link').classList.add('active')
+    document.getElementById('home-nav-link').classList.add('active');
 </script>

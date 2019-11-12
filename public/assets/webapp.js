@@ -1,9 +1,30 @@
-console.log("scripts loaded");
+console.log("client webapp script loaded");
 
-document.addEventListener('click', function (event) {
+$(".btn-save").click(function() {
+  var article = {};
+  var current = $(this).attr("data");
+  var articleID = $("#" + current);
+  article.headline = articleID
+    .children("div")
+    .children("h5")
+    .text();
+  article.summary = articleID
+    .children("div")
+    .children("p")
+    .text();
+  article.url = articleID
+    .children("div")
+    .children("a")
+    .attr("href");
+  console.log(article);
 
-	if (!event.target.matches('.btn-save')) return;
-	event.preventDefault();
-	console.log(event.target);
-
-}, false);
+  var jqxhr = $.post( "/api/add", article, function() {
+	console.log( "sending" );
+  })
+	.done(function() {
+	  console.log( "success" );
+	})
+	.fail(function() {
+	  console.log( "error" );
+	});
+});
